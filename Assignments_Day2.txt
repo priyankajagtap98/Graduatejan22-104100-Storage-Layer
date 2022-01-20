@@ -1,0 +1,214 @@
+1. Select the movie_name & release_date of every movie.
+
+\c moviedb
+You are now connected to database "moviedb" as user "postgres".
+moviedb=# select movie_name,release_date from movies;
+                 movie_name                 | release_date
+--------------------------------------------+--------------
+ A Clockwork Orange                         | 1972-02-02
+ Apocalypse Now                             | 1979-08-15
+ Battle Royale                              | 2001-01-04
+ Blade Runner                               | 1982-06-25
+ Chungking Express                          | 1996-08-03
+ City of God                                | 2003-01-17
+ City of Men                                | 2008-02-29
+ Cold Fish                                  | 2010-09-12
+ Crouching Tiger Hidden Dragon              | 2000-07-06
+ Eyes Wide Shut                             | 1999-07-16
+ Forrest Gump                               | 1994-07-06
+ Gladiator                                  | 2000-05-05
+ Gone with the Wind                         | 1939-12-15
+ Goodfellas                                 | 1990-09-19
+ Grand Budapest Hotel                       | 2014-07-03
+ House of Flying Daggers                    | 2004-03-12
+ In the Mood for Love                       | 2001-02-02
+ Jaws                                       | 1975-06-20
+ Leon                                       | 1994-11-18
+ Let the Right One In                       | 2008-10-24
+ Life of Brian                              | 1979-08-17
+ Life of Pi                                 | 2012-11-21
+ Mary Poppins                               | 1964-08-29
+ Never Let Me Go                            | 2010-09-15
+ Oldboy                                     | 2005-03-25
+ Pans Labyrinth                             | 2006-12-29
+ Ponyo                                      | 2009-08-14
+-- More  --
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Select the first and last names of all American directors.
+
+moviedb=# Select first_name, last_name FROM directors WHERE nationality='American';
+ first_name |  last_name
+------------+--------------
+ Paul       | Anderson
+ Wes        | Anderson
+ James      | Cameron
+ Victor     | Fleming
+ Francis    | Ford Coppola
+ Stanley    | Kubrick
+ John       | Lasseter
+ George     | Lucas
+ Sam        | Raimi
+ Mark       | Romanek
+ Martin     | Scorsese
+ Zack       | Snyder
+ Steven     | Spielberg
+ Quentin    | Tarantino
+ Robert     | Wise
+ Robert     | Zemeckis
+(16 rows)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Select all male actors born after the 1st of January 1970.
+ select first_name
+moviedb-# from actors
+moviedb-# WHERE gender='M' AND date_of_birth > '1970-1-1';
+ first_name
+------------
+ Adrien
+ Chen
+ Paddy
+ Darlan
+ Paul
+ Leonardo
+ Hiroki
+ Leandro
+ James
+ Dillon
+ Tatsuya
+ Mason
+ Andrew
+ Kare
+ Miyu
+ Takeshi
+ Jude
+ Danny
+ Tobey
+ Joaquin
+ Tony
+ Craig
+ Alexandre
+ Jason
+ Suraj
+ Douglas
+ Rafe
+-- More  --
+
+--------------------------------------------------------------------------------------------------------------------------
+4. Select the names of all movies which are over 90 minutes long and movie language is English.
+
+moviedb=# select movie_name
+moviedb-# from movies
+moviedb-# WHERE movie_length >='90' AND movie_lang = 'English';
+                 movie_name
+--------------------------------------------
+ A Clockwork Orange
+ Apocalypse Now
+ Blade Runner
+ Eyes Wide Shut
+ Forrest Gump
+ Gladiator
+ Gone with the Wind
+ Goodfellas
+ Grand Budapest Hotel
+ Jaws
+ Leon
+ Life of Brian
+ Life of Pi
+ Never Let Me Go
+ Pulp Fiction
+ Raging Bull
+ Rushmore
+ Spider-Man
+ Spider-Man 2
+ Spider-Man 3
+ Star Wars: A New Hope
+ Star Wars: Empire Strikes Back
+ Star Wars: Return of the Jedi
+ Submarine
+ Taxi Driver
+ The Darjeeling Limited
+ The Fifth Element
+-- More  --
+---------------------------------------------------------------------------------------------------------------------------
+5. Select the movie names & movie language of all movies with a movie language of English, Spanish, or Korean.
+
+moviedb=# select movie_name,movie_lang
+moviedb-# from movies
+moviedb-# WHERE movie_lang IN('English','Spanish','Korean');
+                 movie_name                 | movie_lang
+--------------------------------------------+------------
+ A Clockwork Orange                         | English
+ Apocalypse Now                             | English
+ Blade Runner                               | English
+ Eyes Wide Shut                             | English
+ Forrest Gump                               | English
+ Gladiator                                  | English
+ Gone with the Wind                         | English
+ Goodfellas                                 | English
+ Grand Budapest Hotel                       | English
+ Jaws                                       | English
+ Leon                                       | English
+ Life of Brian                              | English
+ Life of Pi                                 | English
+ Mary Poppins                               | English
+ Never Let Me Go                            | English
+ Oldboy                                     | Korean
+ Pans Labyrinth                             | Spanish
+ Pulp Fiction                               | English
+ Raging Bull                                | English
+ Rushmore                                   | English
+ Spider-Man                                 | English
+ Spider-Man 2                               | English
+ Spider-Man 3                               | English
+ Star Wars: A New Hope                      | English
+ Star Wars: Empire Strikes Back             | English
+ Star Wars: Return of the Jedi              | English
+ Submarine                                  | English
+-- More  --
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+6. Select the first and last names of the actors whose last name begins with M and were born between 01/01/1940 and 31/12/1969.
+
+moviedb=# Select first_name,last_name
+moviedb-# from actors
+moviedb-# WHERE last_name LIKE 'M%' AND date_of_birth BETWEEN '1940-01-01' AND '1969-12-31';
+ first_name | last_name
+------------+-----------
+ Francis    | McDormand
+ Malcolm    | McDowell
+ Alfred     | Molina
+ Cathy      | Moriarty
+ Ulrich     | Muhe
+ Bill       | Murray
+(6 rows)
+----------------------------------------------------------------------------------------------------------------------------
+
+
+7. Select the first and last names of the directors with natioanlity of British, French or German born between 01/01/1950 and 31/12/1980.
+
+moviedb=# Select first_name,last_name
+moviedb-# from directors
+moviedb-# WHERE nationality='British' OR nationality='French' OR nationality='German' AND date_of_birth BETWEEN '1950-01-01' AND '1980-12-31';
+ first_name |        last_name
+------------+--------------------------
+ Richard    | Ayoade
+ Luc        | Besson
+ Florian    | Henckel von Donnersmarck
+ Terry      | Jones
+ Martin     | McDonagh
+ Ridley     | Scott
+ Tony       | Scott
+ Robert     | Stevenson
+(8 rows)
+
+
+
+
+
+
+
+
+
